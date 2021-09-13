@@ -1,0 +1,183 @@
+
+
+/////////////  MONGO DB COMMANDS FOR DATABASES  //////
+
+
+
+1 ///////////////   view all database
+-> show dbs;
+
+
+
+2 //////////////   selsect or create new data base or switch database  ////
+-> use database name
+
+3 /////////////////  view current database
+-> dbs
+3 /////////   delete databse //////
+-> db.dropDatabase()
+
+
+
+///////////////////  MONGO DB COMMANDS FOR COLLECTION  ////////
+
+1 //////////// show collections  ////
+-> show collections
+
+2 ////////////  create new collections\\\\\\\\\
+->  db.createCollection('NAME OF THAT COLLECTIONS')
+
+3 ///////////// DELETE cOLLECTION ///////
+->  db.name_of_collection.drop()
+
+
+
+/////////// mpngo db command for rows //
+1 ///// insert 1 rows //////////
+
+-> db.Collection_name.insert({crate object})
+  
+
+  2 /////////  insert many rows  //////
+
+  
+-> db.Collection_name.insertMany([{crate object1} , {create object 2} , {crate object1}] )
+  db.details.insertMany([{
+      "name" : 'depanshu',
+      "age" : 22,
+      "mob": 8871876379
+
+  },
+  {
+      "name" : 'pranshu',
+      "age" : 18,
+      "mob": 8871876376
+
+  },
+  {
+      "name" : 'himanshu',
+      "age" : 25,
+      "mob": 8852876379
+
+  }
+  
+  
+  
+  
+  ])
+
+
+
+  /////////    show aaalll rows  ///////
+  -> db.collection.find()
+
+
+
+
+  
+  /////////    show aaalll rows pretty()  ///////
+  -> db.collection.find().pretty()
+
+
+
+
+  //////////////   add new element in in objrct //////
+  db.details.insertMany([{
+      "name" : 'depanshu',
+      "age" : 22,
+      "mob": 8871876379,
+      ////// new element 
+      "date" : new Date()
+
+  }
+
+
+
+  /////////// search in mongo db databse   /////
+
+
+  -> db.details.find({name: "deepanshu"})
+
+
+  ///////////////////   search in limit   ////// 
+  -> db.details.find({name: "deepanshu"}).pretty().limit(2)
+
+
+/////////// count the number of row in collection
+
+
+-> db.details.find().count()
+
+///////// count with search  
+
+-> db.details.find({name:'deepanshu'}).count()
+
+
+//// findOne /////////////
+
+db.details.findOne({nema:'deepanshu'})
+-> it search if get first then stop searching 
+
+
+////////////// for sorting //////////////
+
+//// for assending order //////
+
+db.details.find().sort({member_since: 1}).pretty()
+
+//// for decending order /////////
+
+
+db.details.find().sort({member_since:-1}).pretty()
+
+
+
+////////////////    update   a row   //////
+
+
+db.details.update({name: 'deepanshu'},  {"name" :'deepanshu' , "age" : 20 , "mob" : 8871876379})
+
+
+
+
+///////////////////   mongo db increament operator  ///////
+db.deails.update({name:'Deepanshu Kushwaha'},
+{$inc:{no:10}})
+
+
+
+//////////////  mongo db rename /////////////
+db.deails.update({name:'Deepanshu Kushwaha'},
+{$rename:{no:'number'}})
+
+
+
+
+/////////////////     delete row   /////////
+
+
+db.details.remove({name:'Deepanshu Kushwaha'})
+
+
+
+
+
+
+
+
+
+
+////////////////////  less than  /////
+db.details.find({no:{$lt:9}})
+
+
+////////////////////  less than equal  /////
+db.deails.find({no:{$lte:9}})
+
+////////////////////  greter than  /////
+db.details.find({no:{$gt:9}})
+
+
+
+////////////////////  greter than equal  /////
+db.details.find({no:{$gte:9}})
